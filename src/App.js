@@ -1,33 +1,35 @@
 import React, { useEffect, useState } from 'react'
 import './App.scss';
-
 import FrontEndPage from './page/FrontEndPage'
 import BackEndPage from './page/BackEndPage'
-
-
 import { Route, Switch } from 'react-router-dom'
 
-const App = () => {
+function App() {
 
-  const report = '/report'
+
+  const [listCandidates, setListCandidates] = useState([]);
+
+
   const companies = '/companies'
   const candidates = '/candidates'
+  const reports = '/reports'
   const users = '/users'
   const baseUrl = 'http://localhost:3333/api'
 
   useEffect(() => {
     fetch(baseUrl + candidates)
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => setListCandidates(data))
+
+
   }, []);
-
-
   return (
     <div className="App">
-      <Switch>
-        <Route path='/home' ><FrontEndPage /></Route>
-        <Route path='/home' ><BackEndPage /></Route>
-      </Switch>
+      <Route exact path='/'><FrontEndPage can={listCandidates} /></Route>
+      <Route exact path='/backEnd'><BackEndPage /></Route>
+
+
+
     </div>
   );
 }
