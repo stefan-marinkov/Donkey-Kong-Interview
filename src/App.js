@@ -1,4 +1,6 @@
+
 import React, { useEffect, useState } from 'react'
+
 import './App.scss';
 import FrontEndPage from './page/FrontEndPage'
 import BackEndPage from './page/BackEndPage'
@@ -9,6 +11,7 @@ function App() {
 
   const [listCandidates, setListCandidates] = useState([]);
 
+  console.log(listCandidates)
 
   const companies = '/companies'
   const candidates = '/candidates'
@@ -22,15 +25,13 @@ function App() {
       .then(data => setListCandidates(data))
 
 
+
   }, []);
   return (
     <div className="App">
       <Route exact path='/'><FrontEndPage can={listCandidates} /></Route>
       <Route exact path='/backEnd'><BackEndPage /></Route>
-
-
-
-    </div>
+    </div >
   );
 }
 
