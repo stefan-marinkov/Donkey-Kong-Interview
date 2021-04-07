@@ -1,4 +1,4 @@
-import SecondPage from './SecondPage'
+import BackEndPage from './BackEndPage'
 
-export {SecondPage}
-export default SecondPage
+export {BackEndPage}
+export default BackEndPage

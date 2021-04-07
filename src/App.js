@@ -1,15 +1,18 @@
 import React from 'react'
 import './App.scss';
 
-import Header from './componentsBack/HeaderFront'
-import Footer from './componentsFront/HeaderBack'
+import FrontEndPage from './page/FrontEndPage'
+import BackEndPage from './page/BackEndPage'
 
 import { Link, Route, Switch } from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
-      <Route path='/home' ><Header /></Route>
+      <Switch>
+      <Route path='/home' ><FrontEndPage /></Route>
+      <Route path='/home' ><BackEndPage /></Route>
+      </Switch>
     </div>
   );
 }

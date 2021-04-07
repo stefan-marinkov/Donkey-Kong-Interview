@@ -1,4 +1,4 @@
-import FirstPage from './FirstPage'
+import FrontEndPage from './FrontEndPage'
 
-export {FirstPage}
-export default FirstPage
+export {FrontEndPage}
+export default FrontEndPage
