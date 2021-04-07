@@ -10,9 +10,9 @@ import { Link, Route, Switch } from 'react-router-dom'
 
 function App() {
 
-  const report = '/report'
   const companies = '/companies'
   const candidates = '/candidates'
+  const reports = '/reports'
   const users = '/users'
   const baseUrl = 'http://localhost:3333/api'
 
@@ -20,8 +20,7 @@ function App() {
     fetch(baseUrl + companies)
       .then(res => res.json())
       .then(data => console.log(data))
-  }, [])
-
+  })
 
   return (
     <div className="App">
