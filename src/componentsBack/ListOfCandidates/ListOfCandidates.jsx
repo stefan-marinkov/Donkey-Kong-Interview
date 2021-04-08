@@ -1,11 +1,16 @@
 import React from 'react'
 import './ListOfCandidates.scss'
-import Candidat from '../Candidat'
+import Candidate from '../Candidate'
 
 const ListOfCandidates = props => {
-    console.log(props)
+
     return (
-        <div></div>
+        <div className='ListOfCandidates'>
+            {props.list.map(e => {
+                return <Candidate {...e} />
+            })
+            }
+        </div>
     )
 }
 
