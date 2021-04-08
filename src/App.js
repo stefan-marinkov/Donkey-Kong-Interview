@@ -24,18 +24,17 @@ function App() {
   const baseUrl = 'http://localhost:3333/api'
 
   useEffect(() => {
+    fetch(baseUrl + candidates)
+      .then(res => res.json())
+      .then(data => setListCandidates(data))
+  }, []);
 
-    if (!reports) {
-      fetch(baseUrl + reports)
-        .then(res => res.json())
-        .then(data => setListReports(data))
+  useEffect(() => {
+    fetch(baseUrl + reports)
+      .then(res => res.json())
+      .then(data => setListReports(data))
+  }, []);
 
-    } else {
-      fetch(baseUrl + candidates)
-        .then(res => res.json())
-        .then(data => setListCandidates(data))
-    }
-  }, [reports]);
   return (
     <div className="App">
       <Route exact path='/'><FrontEndPage can={listCandidates} /></Route>
