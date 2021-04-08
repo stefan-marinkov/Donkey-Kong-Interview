@@ -27,15 +27,8 @@ function App() {
     fetch(baseUrl + candidates)
       .then(res => res.json())
       .then(data => setListCandidates(data))
+
   }, [])
-
-  useEffect(() => {
-
-    fetch(baseUrl + reports)
-      .then(res => res.json())
-      .then(data => setListReports(data))
-
-  }, []);
 
   const deleteReport = (id) => {
     const repo = listReports.filter(e => e.id !== id)
@@ -44,12 +37,15 @@ function App() {
 
   const searchReport = (target) => {
     setValue(target)
-
   }
 
   filterRepo = listReports.filter(r => r.candidateName.toLowerCase().includes(value.toLowerCase()))
 
-
+  useEffect(() => {
+    fetch(baseUrl + reports)
+      .then(res => res.json())
+      .then(data => setListReports(data))
+  }, []);
 
   return (
     <div className="App">
