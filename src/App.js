@@ -40,6 +40,8 @@ function App() {
     <div className="App">
       <Route exact path='/'><FrontEndPage can={listCandidates} /></Route>
       <Route exact path='/backEnd'><BackEndPage /></Route>
+      <Route path="/candidatinfo"></Route>
+      <Route path="/wizard"></Route>
     </div >
   );
 }
