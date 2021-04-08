@@ -25,20 +25,17 @@ function App() {
 
   useEffect(() => {
 
-    if(!reports && !candidates) {
-      fetch(baseUrl + companies)
-      .then(res => res.json())
-      .then(data => setListCompanies(data))
-    } else if(!companies && !candidates) {
+    if (!reports) {
       fetch(baseUrl + reports)
         .then(res => res.json())
         .then(data => setListReports(data))
 
-    } else {fetch(baseUrl + candidates)
-      .then(res => res.json())
-      .then(data => setListCandidates(data))
+    } else {
+      fetch(baseUrl + candidates)
+        .then(res => res.json())
+        .then(data => setListCandidates(data))
     }
-  }, [companies,reports]);
+  }, [reports]);
   return (
     <div className="App">
       <Route exact path='/'><FrontEndPage can={listCandidates} /></Route>
