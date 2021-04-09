@@ -4,9 +4,9 @@ import './Company.scss'
 const Company = props => {
     console.log(props)
     return (
-        <div className='Company'>
+        <div className='Company' onClick={() => props.nameCompany(props.name)}>
 
-            <p>{props.companyName}</p>
+            <p>{props.name}</p>
 
         </div>
     )

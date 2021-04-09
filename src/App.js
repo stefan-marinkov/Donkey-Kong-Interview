@@ -8,6 +8,17 @@ import Wizard from './componentsBack/Wizard'
 
 import { Route, Switch } from 'react-router-dom'
 
+export const listCandidatesContext = React.createContext([])
+export const listReportsContext = React.createContext([])
+export const listCompanyContext = React.createContext([])
+
+const { Provider: ListCandidatesProvider } = listCandidatesContext
+const { Provider: ListReportsProvider } = listReportsContext
+const { Provider: ListCompanyProvider } = listCompanyContext
+
+
+
+
 function App() {
 
   let filterRepo;
@@ -24,6 +35,18 @@ function App() {
   const baseUrl = 'http://localhost:3333/api'
 
   useEffect(() => {
+    fetch(baseUrl + reports)
+      .then(res => res.json())
+      .then(data => setListReports(data))
+  }, []);
+
+  useEffect(() => {
+    fetch(baseUrl + companies)
+      .then(res => res.json())
+      .then(data => setListCompanies(data))
+  }, []);
+
+  useEffect(() => {
     fetch(baseUrl + candidates)
       .then(res => res.json())
       .then(data => setListCandidates(data))
@@ -33,6 +56,10 @@ function App() {
   const deleteReport = (id) => {
     const repo = listReports.filter(e => e.id !== id)
     setListReports(repo)
+    fetch(baseUrl + reports + `/${id}`, {
+      method: 'DELETE'
+    })
+      .then(res => res.json())
   }
 
   const searchReport = (target) => {
@@ -41,25 +68,27 @@ function App() {
 
   filterRepo = listReports.filter(r => r.candidateName.toLowerCase().includes(value.toLowerCase()))
 
-  useEffect(() => {
-    fetch(baseUrl + reports)
-      .then(res => res.json())
-      .then(data => setListReports(data))
-  }, []);
+
 
   return (
     <div className="App">
-      <Switch>
-        <Route exact path='/'><FrontEndPage can={listCandidates} /></Route>
-        <Route exact path='/backEnd'>
-          <BackEndPage
-            report={filterRepo}
-            deleteReport={deleteReport}
-            searchReport={searchReport}
-          /></Route>
-        <Route path="/candidatinfo"></Route>
-        <Route path="/wizard"><Wizard list={listCandidates} listCompany={listReports} /></Route>
-      </Switch>
+      <ListCompanyProvider value={listCompanies} >
+        < ListReportsProvider value={listReports}>
+          <ListCandidatesProvider value={listCandidates} >
+            <Switch>
+              <Route exact path='/'><FrontEndPage can={listCandidates} /></Route>
+              <Route exact path='/backEnd'>
+                <BackEndPage
+                  report={filterRepo}
+                  deleteReport={deleteReport}
+                  searchReport={searchReport}
+                /></Route>
+              <Route path="/candidatinfo"></Route>
+              <Route path="/wizard"><Wizard /></Route>
+            </Switch>
+          </ListCandidatesProvider>
+        </ListReportsProvider>
+      </ListCompanyProvider>
     </div >
   );
 }
