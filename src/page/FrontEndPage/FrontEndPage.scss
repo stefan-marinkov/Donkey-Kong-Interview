@@ -1,3 +1,26 @@
 .FrontEndPage {
+    .Search {
+        justify-content: space-between;
+        display: flex;
+        align-items: center;
+        margin: 15px;
+        input {
+            width: 20%;
+            height: 25px;
+            border-radius: 10px;
+        }
+    }
     width: 100%;
+    h1 {
+        display: flex;
+    }
+    main {
+        flex-wrap: wrap;
+        display: flex;
+        justify-content: space-around;
+        color: black;
+        text-align: center;
+        width: 90%;
+        margin-left: 80px;
+    }
 }

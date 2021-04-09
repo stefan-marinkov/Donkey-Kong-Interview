@@ -7,6 +7,7 @@ import BackEndPage from './page/BackEndPage'
 import Wizard from './componentsBack/Wizard'
 
 import { Route, Switch } from 'react-router-dom'
+import CandidatFront from './componentsFront/CandidatFront'
 
 export const listCandidatesContext = React.createContext([])
 export const listReportsContext = React.createContext([])
@@ -27,6 +28,7 @@ function App() {
   const [listCompanies, setListCompanies] = useState([]);
   const [listReports, setListReports] = useState([]);
   const [value, setValue] = useState('')
+  const [id, setId] = useState(null)
 
   const companies = '/companies'
   const candidates = '/candidates'
@@ -70,33 +72,39 @@ function App() {
 
 
 
+
+  let oneCandidate;
+  oneCandidate = listCandidates.filter(c => c.id === id)
+
+  console.log(listReports)
+
   return (
     <div className="App">
       <ListCompanyProvider value={listCompanies} >
         < ListReportsProvider value={listReports}>
           <ListCandidatesProvider value={listCandidates} >
             <Switch>
-              <Route exact path='/'><FrontEndPage can={listCandidates} /></Route>
+              <Route exact path='/'><FrontEndPage can={listCandidates} setId={setId} /></Route>
+              <Route path="/candidatinfo/:id" ><CandidatFront
+                infoCandidates={oneCandidate}
+                infoReports={listReports}
+                report={filterRepo}
+              /></Route>
               <Route exact path='/backEnd'>
                 <BackEndPage
                   report={filterRepo}
                   deleteReport={deleteReport}
                   searchReport={searchReport}
                 /></Route>
-              <Route path="/candidatinfo"></Route>
-              <Route path="/wizard"><Wizard /></Route>
+
+              <Route path="/wizard"><Wizard list={listCandidates} listCompany={listReports} /></Route>
             </Switch>
           </ListCandidatesProvider>
         </ListReportsProvider>
       </ListCompanyProvider>
+
     </div >
   );
 }
-
-
-
-
-
-
 
 export default App;

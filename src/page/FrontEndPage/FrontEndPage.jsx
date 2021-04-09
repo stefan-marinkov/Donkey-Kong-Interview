@@ -1,17 +1,22 @@
 import React from 'react'
 import './FrontEndPage.scss'
 import Header from '../../componentsFront/HeaderFront/index';
-import { Switch, Link, Route } from 'react-router-dom';
-import Candidates from '../../componentsFront/ListCandidates/Candidates.jsx';
+import ListCandidates from '../../componentsFront/ListCandidates/ListCandidates.jsx';
 
 const FrontEndPage = (props) => {
-    console.log(props)
     return (
         <div className='FrontEndPage'>
             <Header />
-            {props.can.map(c => {
-                return <Candidates {...c} />
-            })}
+            <div className="Search">
+                <h1>Candidates</h1>
+                <input type="text" placeholder="Search for users..."></input>
+            </div>
+            <hr></hr>
+            <main>
+                {props.can.map(c => {
+                    return <ListCandidates {...c} setId={props.setId} />
+                })}
+            </main>
 
         </div>
     )
