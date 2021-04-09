@@ -1,11 +1,34 @@
 table {
-    border: solid black 2px;
     margin-left: 15px;
     margin-right: 15px;
     width: 95%;
     margin-top: 15px;
-    th {
-        background-color: #eee;
-        border-right: 2px solid black;
+    .rows {
+        background-color: #157eab;
+        border-right: 2px solid black; 
+        border-bottom: 1px solid black;
+        border-radius: 10px;
+        height: 40px;
+        color: white;
     }
+    .row2 {
+        background-color: rgb(206, 209, 211);
+        border-right: 2px solid black; 
+        border-bottom: 1px solid black;
+        border-radius: 10px;
+        height: 40px;
+    }
+
+}
+.reports{
+    margin: 25px;
+    font-size: 25px;
+}
+
+.fa {
+    margin-left: 22px;
+}
+
+.fa:hover {
+    cursor: pointer;
 }

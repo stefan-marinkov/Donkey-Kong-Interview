@@ -1,15 +1,17 @@
 import React from 'react';
-import './HeaderFront.scss';
+import './HeaderFront.scss'
+import { Link } from 'react-router-dom';
 
 const Header = props => {
     return (
         <div>
             <header>
                 <div className="logo">
-                    LOGO
+                    INTERVIEW REPORTS
                 </div>
                 <div >
-                    <button>Login</button>
+                    <Link to="/Login"><button>Login</button></Link>
+
                 </div>
             </header>
 

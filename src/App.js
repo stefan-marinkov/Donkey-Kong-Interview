@@ -8,6 +8,7 @@ import Wizard from './componentsBack/Wizard'
 
 import { Route, Switch } from 'react-router-dom'
 import CandidatFront from './componentsFront/CandidatFront'
+import Login from './componentsFront/Login/Login';
 
 export const listCandidatesContext = React.createContext([])
 export const listReportsContext = React.createContext([])
@@ -16,8 +17,6 @@ export const listCompanyContext = React.createContext([])
 const { Provider: ListCandidatesProvider } = listCandidatesContext
 const { Provider: ListReportsProvider } = listReportsContext
 const { Provider: ListCompanyProvider } = listCompanyContext
-
-
 
 
 function App() {
@@ -29,6 +28,8 @@ function App() {
   const [listReports, setListReports] = useState([]);
   const [value, setValue] = useState('')
   const [id, setId] = useState(null)
+
+  console.log(listReports)
 
   const companies = '/companies'
   const candidates = '/candidates'
@@ -71,12 +72,11 @@ function App() {
   filterRepo = listReports.filter(r => r.candidateName.toLowerCase().includes(value.toLowerCase()))
 
 
-
-
-  let oneCandidate;
+  let oneCandidate = [];
   oneCandidate = listCandidates.filter(c => c.id === id)
 
-  console.log(listReports)
+  let candidateReport = [];
+  candidateReport = listReports.filter(c => c.candidateId === id)
 
   return (
     <div className="App">
@@ -87,9 +87,9 @@ function App() {
               <Route exact path='/'><FrontEndPage can={listCandidates} setId={setId} /></Route>
               <Route path="/candidatinfo/:id" ><CandidatFront
                 infoCandidates={oneCandidate}
-                infoReports={listReports}
-                report={filterRepo}
+                oneReport={candidateReport}
               /></Route>
+              <Route path="/Login" component={Login}></Route>
               <Route exact path='/backEnd'>
                 <BackEndPage
                   report={filterRepo}
@@ -102,7 +102,6 @@ function App() {
           </ListCandidatesProvider>
         </ListReportsProvider>
       </ListCompanyProvider>
-
     </div >
   );
 }
