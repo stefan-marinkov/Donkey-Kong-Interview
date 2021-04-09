@@ -4,7 +4,6 @@ import Header from '../../componentsFront/HeaderFront/index';
 import ListCandidates from '../../componentsFront/ListCandidates/ListCandidates.jsx';
 
 const FrontEndPage = (props) => {
-    console.log(props)
     return (
         <div className='FrontEndPage'>
             <Header />
@@ -15,7 +14,7 @@ const FrontEndPage = (props) => {
             <hr></hr>
             <main>
                 {props.can.map(c => {
-                    return <ListCandidates {...c} />
+                    return <ListCandidates {...c} setId={props.setId} />
                 })}
             </main>
 

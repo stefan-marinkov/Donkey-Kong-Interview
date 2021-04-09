@@ -1,0 +1,46 @@
+.CandidatFront {
+    width: 100%;
+}
+
+.Maindiv{
+    display: flex;
+
+}
+.Leftdiv{
+    img{
+        width: 400px;
+        margin-left: 50px;
+        border: 2px solid black;
+        margin-top: 50px;
+    }
+}
+.Rightdiv{
+    display: flex;
+    align-items: center;
+    .Namebirth {
+        .onediv {
+        margin-left: 100px;
+        }
+        p {
+        margin-top: 20px;
+        font-size: 25px;
+        margin-left: 25px;
+        }
+        h5{
+            margin-top: 45px;
+        }
+    }  
+    .Maileducation {
+        .twodiv {
+        margin-left: 100px;
+        } 
+        p {
+            font-size: 25px;
+            margin-top: 25px;
+            margin-left: 25px;
+        }
+        h5{
+            margin-top: 45px;
+        }
+    }
+}
