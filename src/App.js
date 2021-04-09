@@ -18,7 +18,6 @@ const { Provider: ListCandidatesProvider } = listCandidatesContext
 const { Provider: ListReportsProvider } = listReportsContext
 const { Provider: ListCompanyProvider } = listCompanyContext
 
-
 function App() {
 
   let filterRepo;
@@ -105,5 +104,4 @@ function App() {
     </div >
   );
 }
-
 export default App;
