@@ -1,16 +1,12 @@
 import React, { useContext } from 'react'
 import './Wizard.scss'
 
-
 import { Link } from 'react-router-dom'
-import Company from '../Company'
-import { listCompanyContext } from "../../App"
-
+import { listReportsContext } from '../../App'
 
 const WizardCompany = (props) => {
-    const listCompany = useContext(listCompanyContext)
-
-
+    const linkReports = useContext(listReportsContext)
+    console.log(linkReports)
     return (
         <>
             <div className="WizardCompany">
@@ -19,28 +15,29 @@ const WizardCompany = (props) => {
                         Select Candidate
                     </li>
                     <li>
-                        <b>Select Company</b>
+                        Select Company
                     </li>
                     <li>
-                        Fill Report Details
-            </li>
+                        <b>Fill Report Details</b>
+                    </li>
                     <div>
                         <h3>Candidate:</h3>
                         <p>{props.name}</p>
+                        <h3>Company:</h3>
+                        <p>{props.nameComp}</p>
                     </div>
                 </ol>
             </div>
             <div className='listWithSearchCompany'>
                 <div className='search'><input type='text' placeholder='Search' /></div>
-                <div className='listComp'>
-                    {
-                        listCompany.map(comp => {
-                            console.log(comp)
-                            return <Company {...comp} nameCompany={props.nameCompany} />
-                        })
-                    }
-                    <Link to='/wizard'><button>Prev</button></Link>
-                    <Link to='/wizard/wizardFullReport'><button>Next</button></Link>
+                <div className='listFullReport'>
+                    <div>
+                        <h1>Full Report</h1>
+                        <p>Napred</p>
+                        <p>Nazad</p>
+                    </div>
+                    <Link to='/wizard/wizardCompany'><button>Prev</button></Link>
+                    {/* <Link to='/wizard/wizardFullReport'><button>Next</button></Link> */}
                 </div>
             </div>
         </>

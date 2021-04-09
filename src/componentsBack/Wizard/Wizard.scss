@@ -4,16 +4,15 @@
     background: cadetblue;
     display:flex;
     flex-direction: row;
+}
 
-    .wizardCandidates {
+    .WizardCandidates {
         width: 30%;
         height: 300px;
         display: flex;
         justify-content: center;
         align-items: center;
-        
     }
-    
     .listWithSearch {
         width: 60%;
         display: flex;
@@ -29,15 +28,48 @@
                 margin-left: 3%;
             }
         }
-        .ListOfCandidates {
+        // .ListOfCandidates {
+        //     width: 90%;
+        //     margin: 0 auto;
+        //     height: 500px;
+        //     display: flex;
+        //     flex-direction: row;
+        //     flex-wrap: wrap;
+        //     }
+        }
+  
+
+    .WizardCompany {
+        width: 30%;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .listWithSearchCompany {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        // .search {
+        //     width: 100%;
+        //     height: 2rem;     
+        //     display: flex;
+        //     align-items: center;
+        //        input {
+        //         width: 20%;
+        //         border-radius: 10px;
+        //         margin-left: 3%;
+        //     }
+        // }
+        
+        }
+        .listComp {
             width: 90%;
             margin: 0 auto;
             height: 500px;
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-                
-        }
-    }
+            }
 
-}
+    

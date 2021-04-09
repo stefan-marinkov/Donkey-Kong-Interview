@@ -4,9 +4,8 @@ import './Candidate.scss'
 const Candidate = props => {
     console.log(props)
     return (
-        <div className='Candidate'>
+        <div className={!props.name ? 'Candidate' : 'Candidate CandidateActive'} onClick={() => props.nameCandidate(props.name)}>
             <p>{props.name}</p>
-            <p>{props.birthday}</p>
             <p>{props.email}</p>
 
 
