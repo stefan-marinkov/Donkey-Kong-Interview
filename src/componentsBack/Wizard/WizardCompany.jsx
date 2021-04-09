@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Company from '../../Company'
+import Company from '../Company'
 
 const WizardCompany = (props) => {
 
