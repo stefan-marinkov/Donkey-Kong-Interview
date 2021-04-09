@@ -3,10 +3,14 @@ import './HeaderFront.scss';
 
 const Header = props => {
     return (
-        <div className='Header'>
+        <div>
             <header>
-                HEADER
-                <button>LOGIN</button>
+                <div className="logo">
+                    LOGO
+                </div>
+                <div >
+                    <button>Login</button>
+                </div>
             </header>
 
         </div>

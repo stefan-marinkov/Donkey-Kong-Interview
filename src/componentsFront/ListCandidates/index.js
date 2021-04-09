@@ -1,4 +1,4 @@
-import candidates from './Candidates.jsx';
+import ListCandidates from './ListCandidates.jsx';
 
-export { candidates };
-export default candidates;
+export { ListCandidates };
+export default ListCandidates;

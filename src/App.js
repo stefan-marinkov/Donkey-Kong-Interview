@@ -7,6 +7,7 @@ import BackEndPage from './page/BackEndPage'
 import Wizard from './componentsBack/Wizard'
 
 import { Route, Switch } from 'react-router-dom'
+import CandidatFront from './componentsFront/CandidatFront'
 
 export const listCandidatesContext = React.createContext([])
 export const listReportsContext = React.createContext([])

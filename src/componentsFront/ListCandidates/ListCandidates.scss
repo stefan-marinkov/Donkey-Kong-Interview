@@ -1,0 +1,25 @@
+.CandidateCard {
+    border:2px solid black;
+    margin:15px;
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-shadow: 0px 0px 10px 1px rgb(0 0 0 / 60%);
+    transition: 0.6s;
+    margin-top: 50px;
+    img{
+        width: 300px;
+        height: 300px;
+    }
+    h3{
+        margin: 5px;
+    }
+}
+
+.CandidateCard:hover{
+    transition: 0.6s;
+    transform: scale(1.1);
+    background-color: rgba(0, 99, 145, 0.562);
+}
