@@ -13,10 +13,12 @@ import Login from './componentsFront/Login/Login';
 export const listCandidatesContext = React.createContext([])
 export const listReportsContext = React.createContext([])
 export const listCompanyContext = React.createContext([])
+export const loginContext = React.createContext([])
 
 const { Provider: ListCandidatesProvider } = listCandidatesContext
 const { Provider: ListReportsProvider } = listReportsContext
 const { Provider: ListCompanyProvider } = listCompanyContext
+const { Provider: LoginContextProvider } = loginContext
 
 function App() {
 
@@ -27,8 +29,8 @@ function App() {
   const [listReports, setListReports] = useState([]);
   const [value, setValue] = useState('')
   const [id, setId] = useState(null)
-
-  console.log(listReports)
+  const [token, setToken] = useState('')
+  console.log(token)
 
   const companies = '/companies'
   const candidates = '/candidates'
@@ -59,7 +61,10 @@ function App() {
     const repo = listReports.filter(e => e.id !== id)
     setListReports(repo)
     fetch(baseUrl + reports + `/${id}`, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {
+        Authorization: ` Bearer ${token}`
+      }
     })
       .then(res => res.json())
   }
@@ -77,30 +82,67 @@ function App() {
   let candidateReport = [];
   candidateReport = listReports.filter(c => c.candidateId === id)
 
+  const logIn = (email, password) => {
+    console.log(email, password)
+    fetch('http://localhost:3333/login', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        password,
+        // Authorization: 'Bearer <USER ACCESS TOKEN>',
+      })
+    }).then(results => results.json())
+      .then(data => {
+        if (data.accessToken)
+          setToken(data)
+      })
+
+  }
+
+  const logOut = () => {
+    setToken('')
+  }
+
   return (
     <div className="App">
-      <ListCompanyProvider value={listCompanies} >
-        < ListReportsProvider value={listReports}>
-          <ListCandidatesProvider value={listCandidates} >
-            <Switch>
-              <Route exact path='/'><FrontEndPage can={listCandidates} setId={setId} /></Route>
-              <Route path="/candidatinfo/:id" ><CandidatFront
-                infoCandidates={oneCandidate}
-                oneReport={candidateReport}
-              /></Route>
-              <Route path="/Login" component={Login}></Route>
-              <Route exact path='/backEnd'>
-                <BackEndPage
-                  report={filterRepo}
-                  deleteReport={deleteReport}
-                  searchReport={searchReport}
-                /></Route>
+      <LoginContextProvider value={{ logIn, token }}>
+        <ListCompanyProvider value={listCompanies} >
+          < ListReportsProvider value={listReports}>
+            <ListCandidatesProvider value={listCandidates} >
 
-              <Route path="/wizard"><Wizard list={listCandidates} listCompany={listReports} /></Route>
-            </Switch>
-          </ListCandidatesProvider>
-        </ListReportsProvider>
-      </ListCompanyProvider>
+
+              <Switch>
+
+
+                <Route exact path='/'><FrontEndPage can={listCandidates} setId={setId} logIn={logIn} /></Route>
+                <Route path="/candidatinfo/:id" >
+                  <CandidatFront
+                    infoCandidates={oneCandidate}
+                    oneReport={candidateReport}
+                  /></Route>
+                <Route path="/Login" component={Login}></Route>
+                <Route exact path='/backEnd'>
+                  <BackEndPage
+                    report={filterRepo}
+                    deleteReport={deleteReport}
+                    searchReport={searchReport}
+                    logOut={logOut}
+                  /></Route>
+
+                <Route path="/wizard"><Wizard list={listCandidates} listCompany={listReports} /></Route>
+
+
+
+              </Switch>
+
+
+            </ListCandidatesProvider>
+          </ListReportsProvider>
+        </ListCompanyProvider>
+      </LoginContextProvider>
     </div >
   );
 }

@@ -57,9 +57,9 @@ const WizardCompany = (props) => {
                             </label>
                             <label>
                                 <p>Phase:</p>
-                                <select>
+                                <select >
                                     {/* <option>{setPhase('cv')}</option> */}
-                                    <option>hr</option>
+                                    <option value={1}>hr</option>
                                     <option>tech</option>
                                     <option>final</option>
 

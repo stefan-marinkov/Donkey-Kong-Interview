@@ -6,7 +6,6 @@ import Modal from "react-modal";
 Modal.setAppElement("#root");
 
 const ListOfReports = props => {
-    console.log(props)
 
     const [isOpen, setIsOpen] = useState(false);
 
