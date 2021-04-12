@@ -15,25 +15,25 @@ const ListOfReports = props => {
 
     return (
         <div className='ListOfReports'>
-            <div className='reports'>
+            <div className='inreports'>
                 <div className='aboutRepo'>
                     <p>{props.companyName}</p>
-                    <p>Company</p>
+                    <p className="headlinereport">Company</p>
                 </div>
                 <div className='aboutRepo'>
                     <p>{props.candidateName}</p>
-                    <p>Name</p>
+                    <p className="headlinereport">Name</p>
                 </div>
                 <div className='aboutRepo'>
-                    <p>{props.interviewDate}</p>
-                    <p>Date</p>
+                    <p>{props.interviewDate.slice(4, 15)}</p>
+                    <p className="headlinereport">Interview Date</p>
                 </div>
                 <div className='aboutRepo'>
                     <p>{props.status}</p>
-                    <p>Status</p>
+                    <p className="headlinereport">Status</p>
                 </div>
                 <div className='aboutRepo btns'>
-                    <button onClick={toggleModal} >Modal</button>
+                    <i className="fa fa-eye" onClick={toggleModal} tia-hidden="true"></i>
                     <Modal
                         isOpen={isOpen}
                         onRequestClose={toggleModal}
@@ -61,7 +61,7 @@ const ListOfReports = props => {
                         </div>
                         <button className='btn' onClick={toggleModal}>Close</button>
                     </Modal>
-                    <button onClick={() => props.deleteReport(props.id)}>Delete</button>
+                    <i className="fa fa-close" onClick={() => props.deleteReport(props.id)} tia-hidden="true"></i>
                 </div>
             </div >
         </div >

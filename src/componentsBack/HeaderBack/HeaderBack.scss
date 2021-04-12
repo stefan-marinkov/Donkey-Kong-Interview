@@ -1,23 +1,32 @@
-.HeaderBack {
+.HeaderBack{
+    background-color: #157eab;
     width: 100%;
-    height: 5rem;
-    background: red;
-    display:flex;
+    height: 50px;
+    color: white;
+
+    display: flex;
     justify-content: space-between;
-    align-items:center ;
-    span{
-        margin-left: 5%;
+    align-items: center;
+    .adminreport{
+        margin-left: 20px;
+        font-size: 20px;
+        font-family: monospace;
     }
-    .buttons{
-        margin-right: 5%;
-        width:40%;
-        button {
-            width: 50%;
-            cursor: pointer;
-            &:hover {
-                background: gray;
-                transition: all .4s ease;
-            }
-        }
+    button{
+        margin-right: 20px;
+        border-radius: 10px;
+        height: 30px;
+        width: 100px;
+        color: white;
+        background-color: #157eab;
+        border: white 2px solid;
+        transition: 0.6s;
     }
+    button:hover {
+        cursor: pointer;
+        background-color: white;
+        color: #157eab;
+        transition: 0.6s;
+    }
+    
 }

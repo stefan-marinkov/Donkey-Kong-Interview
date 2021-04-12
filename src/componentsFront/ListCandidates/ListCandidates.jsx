@@ -1,7 +1,6 @@
 import './ListCandidates.scss';
 import { Link } from 'react-router-dom';
 import ProfilePicture from '../../img/userprofile.png';
-import CandidatFront from '../CandidatFront';
 
 const ListCandidates = (props) => {
     return (

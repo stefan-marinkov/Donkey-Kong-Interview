@@ -23,64 +23,72 @@ const WizardCompany = (props) => {
     return (
         <>
             <div className="WizardCompany">
-                <ol>
-                    <li>
-                        Select Candidate
-                    </li>
-                    <li>
-                        Select Company
-                    </li>
-                    <li>
-                        <b>Fill Report Details</b>
-                    </li>
-                    <div>
-                        <h3>Candidate:</h3>
-                        <p>{props.name}</p>
-                        <h3>Company:</h3>
-                        <p>{props.nameComp}</p>
-                    </div>
-                </ol>
+                <div className="divlista">
+                    <span>1</span> Select Candidate
+                </div>
+                <div className="divlista">
+                    <span>2</span> Select Company
+                </div>
+                <div className="divlista">
+                    <span>3</span> <b>Fill Report Details</b>
+                </div>
+                <div className="line"></div>
+                <span className="candidatename">Candidate:</span>
+                <div className="candidatediv">
+                    {props.name}
+                </div>
+                <div>
+                    <span className="companyname">Company:</span>
+                </div>
+                <div className="candidatediv">
+                    {props.nameComp}
+                </div>
             </div>
             <div className='listWithSearchCompany'>
 
                 <div className='listFullReport'>
                     <div>
                         <form>
-                            <label>
-                                <p>Interview Date:</p>
-                                <div>
-                                    <DatePicker
-                                        onChange={onChange}
-                                        value={value}
-                                    />
-                                </div>
-                            </label>
-                            <label>
-                                <p>Phase:</p>
-                                <select >
-                                    {/* <option>{setPhase('cv')}</option> */}
-                                    <option value={1}>hr</option>
-                                    <option>tech</option>
-                                    <option>final</option>
+                            <div className="date-phase-status">
+                                <label>
+                                    <p>Interview Date:</p>
+                                    <div className="calendar">
+                                        <DatePicker
+                                            onChange={onChange}
+                                            value={value}
+                                        />
+                                    </div>
+                                </label>
+                                <label>
+                                    <p>Phase:</p>
+                                    <select >
+                                        {/* <option>{setPhase('cv')}</option> */}
+                                        <option value={1}>hr</option>
+                                        <option>tech</option>
+                                        <option>final</option>
 
 
-                                </select>
-                            </label>
-                            <label>
-                                <p>Status:</p>
-                                <select>
-                                    <option>passed</option>
-                                    <option>declined</option>
-                                </select>
-                            </label>
-                            <label>
-                                <p>Notes:</p>
-                                <textarea></textarea>
-                            </label>
+                                    </select>
+                                </label>
+                                <label>
+                                    <p>Status:</p>
+                                    <select>
+                                        <option>passed</option>
+                                        <option>declined</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div className='divnote'>
+                                <label>
+                                    <p>Notes:</p>
+                                    <textarea rows="20" cols="125"></textarea>
+                                </label>
+                            </div>
                         </form>
-
-                        <Link to='/wizard/wizardCompany'><button>Prev</button></Link>
-                        <Link to='/wizard/'><button>Submit</button></Link>
+                        <div className="buttondivdetails">
+                            <Link to='/wizard/wizardCompany'><button className="nextbuttondetails">Back</button></Link>
+                            <Link to='/wizard/'><button className="nextbuttondetails">Submit</button></Link>
+                        </div>
                     </div>
 
                 </div>

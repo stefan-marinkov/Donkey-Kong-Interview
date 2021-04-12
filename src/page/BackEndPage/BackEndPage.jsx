@@ -14,7 +14,11 @@ function BackEndPage(props) {
             {!token ? <Redirect to='/'></Redirect > :
                 <div className='BackEndPage'>
                     <HeaderBack changeReport={props.changeReport} logOut={props.logOut} />
-                    <div className='search'><input type='text' placeholder='Search' onChange={(e) => props.searchReport(e.target.value)} /></div>
+                    <div className="divsearch">
+                        <h1>Candidates</h1>
+                        <input type='text' placeholder='Search' onChange={(e) => props.searchReport(e.target.value)} />
+                    </div>
+                    <hr></hr>
                     {props.report.map(r => {
                         return <ListOfReports {...r} deleteReport={props.deleteReport} />
                     })}

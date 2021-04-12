@@ -1,11 +1,35 @@
 .Company{
-    width:300px;
-    height:100px;
+    width:46%;
+    height:auto;
     padding: 2%;
     border: 1px solid black;
     margin: 2%;
+    margin-top: 25px;
+    border-radius: 10px;
+    border: solid #157eab 2px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: 0.3s;
+
+}
+
+.Company:hover{
+    width:46%;
+    height:auto;
+    padding: 2%;
+    border: 1px solid black;
+    margin: 2%;
+    margin-top: 25px;
+    border-radius: 10px;
+    border: solid #157eab 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #157eab;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
 }

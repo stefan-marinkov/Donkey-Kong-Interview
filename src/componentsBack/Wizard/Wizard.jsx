@@ -21,6 +21,11 @@ const Wizard = props => {
     return (
         <>
             <HeaderBack />
+            <div className="divsearch">
+                <h1>Create Report</h1>
+                <input type='text' placeholder='Search' onChange={(e) => props.searchReport(e.target.value)} />
+            </div>
+            <hr></hr>
             <div className='Wizard'>
 
                 <Switch >

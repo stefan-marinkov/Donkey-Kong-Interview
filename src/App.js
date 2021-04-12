@@ -10,15 +10,20 @@ import { Route, Switch } from 'react-router-dom'
 import CandidatFront from './componentsFront/CandidatFront'
 import Login from './componentsFront/Login/Login';
 
+
+
 export const listCandidatesContext = React.createContext([])
 export const listReportsContext = React.createContext([])
 export const listCompanyContext = React.createContext([])
 export const loginContext = React.createContext([])
+export const candidatFrontContext = React.createContext([])
 
 const { Provider: ListCandidatesProvider } = listCandidatesContext
 const { Provider: ListReportsProvider } = listReportsContext
 const { Provider: ListCompanyProvider } = listCompanyContext
 const { Provider: LoginContextProvider } = loginContext
+const { Provider: CandidatFrontProvider } = candidatFrontContext
+
 
 function App() {
 
@@ -112,33 +117,33 @@ function App() {
         <ListCompanyProvider value={listCompanies} >
           < ListReportsProvider value={listReports}>
             <ListCandidatesProvider value={listCandidates} >
+              <CandidatFrontProvider value={{ oneCandidate, candidateReport }} >
+
+                <Switch>
 
 
-              <Switch>
+                  <Route exact path='/'><FrontEndPage can={listCandidates} setId={setId} logIn={logIn} /></Route>
+                  <Route path="/candidatinfo/:id" >
+                    <CandidatFront
+                      infoCandidates={oneCandidate}
+                      oneReport={candidateReport}
+                    /></Route>
+                  <Route path="/Login" component={Login}></Route>
+                  <Route exact path='/backEnd'>
+                    <BackEndPage
+                      report={filterRepo}
+                      deleteReport={deleteReport}
+                      searchReport={searchReport}
+                      logOut={logOut}
+                    /></Route>
 
-
-                <Route exact path='/'><FrontEndPage can={listCandidates} setId={setId} logIn={logIn} /></Route>
-                <Route path="/candidatinfo/:id" >
-                  <CandidatFront
-                    infoCandidates={oneCandidate}
-                    oneReport={candidateReport}
-                  /></Route>
-                <Route path="/Login" component={Login}></Route>
-                <Route exact path='/backEnd'>
-                  <BackEndPage
-                    report={filterRepo}
-                    deleteReport={deleteReport}
-                    searchReport={searchReport}
-                    logOut={logOut}
-                  /></Route>
-
-                <Route path="/wizard"><Wizard list={listCandidates} listCompany={listReports} /></Route>
+                  <Route path="/wizard"><Wizard list={listCandidates} listCompany={listReports} /></Route>
 
 
 
-              </Switch>
+                </Switch>
 
-
+              </CandidatFrontProvider>
             </ListCandidatesProvider>
           </ListReportsProvider>
         </ListCompanyProvider>
