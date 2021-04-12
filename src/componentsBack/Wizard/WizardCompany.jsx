@@ -14,24 +14,22 @@ const WizardCompany = (props) => {
     return (
         <>
             <div className="WizardCompany">
-                <ol>
-                    <li>
-                        Select Candidate
-                    </li>
-                    <li>
-                        <b>Select Company</b>
-                    </li>
-                    <li>
-                        Fill Report Details
-            </li>
-                    <div>
-                        <h3>Candidate:</h3>
-                        <p>{props.name}</p>
-                    </div>
-                </ol>
+                <div className="divlista">
+                    <span>1</span> Select Candidate
+                </div>
+                <div className="divlista">
+                    <span>2</span> <b>Select Company</b>
+                </div>
+                <div className="divlista">
+                    <span>3</span> Fill Report Details
+                </div>
+                <div className="line"></div>
+                <span className="candidatename">Candidate:</span>
+                <div className="candidatediv">
+                    {props.name}
+                </div>
             </div>
             <div className='listWithSearchCompany'>
-                <div className='search'><input type='text' placeholder='Search' /></div>
                 <div className='listComp'>
                     {
                         listCompany.map(comp => {
@@ -39,8 +37,10 @@ const WizardCompany = (props) => {
                             return <Company {...comp} nameCompany={props.nameCompany} />
                         })
                     }
-                    <Link to='/wizard'><button>Prev</button></Link>
-                    <Link to='/wizard/wizardFullReport'><button>Next</button></Link>
+                    <div className="buttondiv">
+                        <Link to='/wizard/wizardFullReport'><button className="nextbuttoncompany">Next</button></Link>
+                        <Link to='/wizard'><button className="nextbuttoncompany">Back</button></Link>
+                    </div>
                 </div>
             </div>
         </>
