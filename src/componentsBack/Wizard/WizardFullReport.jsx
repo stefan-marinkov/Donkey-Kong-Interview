@@ -6,19 +6,8 @@ import { Link } from 'react-router-dom'
 import { listReportsContext } from '../../App'
 
 const WizardCompany = (props) => {
-    const linkReports = useContext(listReportsContext)
-    console.log(linkReports)
-    const [value, onChange] = useState(new Date());
+    //  const linkReports = useContext(listReportsContext)
 
-    const [phase, setPhase] = useState('')
-
-    // const reportSet = () => {
-    //     fetch('http://localhost:3333/api/reports',
-    //         method: 'POST',
-
-    //     )
-    //         .then(res => res.json())
-    // }
 
     return (
         <>
@@ -50,37 +39,38 @@ const WizardCompany = (props) => {
                                 <p>Interview Date:</p>
                                 <div>
                                     <DatePicker
-                                        onChange={onChange}
-                                        value={value}
+                                        onChange={props.setDate}
+                                        date={props.date}
                                     />
                                 </div>
                             </label>
                             <label>
                                 <p>Phase:</p>
-                                <select >
-                                    {/* <option>{setPhase('cv')}</option> */}
-                                    <option value={1}>hr</option>
-                                    <option>tech</option>
-                                    <option>final</option>
+                                <select onChange={(e) => props.setPhase(e.target.value)} >
+                                    <option></option>
+                                    <option value={'hr'}>hr</option>
+                                    <option value={'tech'}>tech</option>
+                                    <option value={'final'}>final</option>
 
 
                                 </select>
                             </label>
                             <label>
                                 <p>Status:</p>
-                                <select>
-                                    <option>passed</option>
-                                    <option>declined</option>
+                                <select onChange={(e) => props.setStatus(e.target.value)}>
+                                    <option></option>
+                                    <option value={'passed'}>passed</option>
+                                    <option value={'declined'}>declined</option>
                                 </select>
                             </label>
                             <label>
                                 <p>Notes:</p>
-                                <textarea></textarea>
+                                <textarea onChange={(e) => props.setText(e.target.value)}></textarea>
                             </label>
                         </form>
 
                         <Link to='/wizard/wizardCompany'><button>Prev</button></Link>
-                        <Link to='/wizard/'><button>Submit</button></Link>
+                        <Link to='/wizard/'><button onClick={props.reportSet}>Submit</button></Link>
                     </div>
 
                 </div>

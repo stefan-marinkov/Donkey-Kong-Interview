@@ -8,9 +8,9 @@ import { loginContext } from '../../App'
 
 function BackEndPage(props) {
     const { token } = useContext(loginContext)
-
     return (
         <>
+
             {!token ? <Redirect to='/'></Redirect > :
                 <div className='BackEndPage'>
                     <HeaderBack changeReport={props.changeReport} logOut={props.logOut} />

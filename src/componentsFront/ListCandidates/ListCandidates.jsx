@@ -8,7 +8,7 @@ const ListCandidates = (props) => {
         <>
             <div>
                 <Link to={`/candidatinfo/${props.id}`}>
-                    <div className="CandidateCard" onClick={() => props.setId(props.id)}>
+                    <div className="CandidateCard" onClick={() => props.setId(props.id) }>
                         <img src={ProfilePicture} alt="profilepicture"></img>
                         <h3>{props.name}</h3>
                         <p>{props.email}</p>

@@ -23,7 +23,7 @@ const ListOfReports = props => {
                                 <th>{r.status}
                                 </th>
                                 <th>
-                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                    <i className="fa fa-eye" aria-hidden="true"></i>
                                 </th>
                             </tr>
                         </>
