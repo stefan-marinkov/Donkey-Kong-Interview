@@ -33,7 +33,6 @@ const WizardCompany = (props) => {
                 <div className='listComp'>
                     {
                         listCompany.map(comp => {
-                            console.log(comp)
                             return <Company {...comp} nameCompany={props.nameCompany} />
                         })
                     }
