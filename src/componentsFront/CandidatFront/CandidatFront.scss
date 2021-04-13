@@ -45,3 +45,26 @@
         }
     }
 }
+
+
+@media only screen and (max-width: 768px) {
+    .Maindiv{
+        flex-wrap: wrap;
+    }
+    .Rightdiv{
+   
+        flex-wrap: wrap;
+    
+    }
+    h5{
+        font-size: 18px;
+        color: rgb(82, 82, 82);
+    }
+    .Leftdiv{
+        margin-left: 35px;
+    }
+    .onediv{
+        font-size: 14px;
+    }
+
+}

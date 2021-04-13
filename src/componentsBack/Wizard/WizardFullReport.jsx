@@ -42,8 +42,10 @@ const WizardCompany = (props) => {
                                     <p>Interview Date:</p>
                                     <div>
                                         <DatePicker
-                                            onChange={props.setDate}
-                                            date={props.date}
+                                            selected={props.startDate}
+                                            onChange={date => props.setStartDate(date)}
+
+
                                         />
                                     </div>
                                 </label>
@@ -72,16 +74,14 @@ const WizardCompany = (props) => {
                                 </label>
                             </div>
                         </form>
-                        <div className="detailsbuttons">
-                            <Link to='/wizard/wizardCompany'><button className="nextbuttondetails">Back</button></Link>
-                            <Link to='/backEnd'><button className="nextbuttondetails" onClick={props.reportSet}>Submit</button></Link>
+                        <div className="nextbuttondetails">
+                            <Link to='/wizard/wizardCompany'><button className="nextbuttonsdetails">Prev</button></Link>
+                            <Link to='/backEnd'><button onClick={() => {
+                                props.reportSet()
+                                props.setDataIsValid(false)
+                            }
+                            } className="nextbuttonsdetails">Submit</button></Link>
                         </div>
-                        <Link to='/wizard/wizardCompany'><button>Prev</button></Link>
-                        <Link to='/backEnd'><button onClick={() => {
-                            props.reportSet()
-                            props.setDataIsValid(false)
-                        }
-                        }>Submit</button></Link>
                     </div>
 
                 </div>

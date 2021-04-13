@@ -16,6 +16,10 @@
     h3{
         margin: 5px;
     }
+    a {
+        text-decoration: none;
+        color: black;
+    }
 }
 
 .CandidateCard:hover{
@@ -27,4 +31,24 @@
 
 a:link{
     text-decoration: none;
+}
+
+
+@media only screen and (max-width: 768px) {
+    body {
+        width: 100%;
+    }
+
+    .CandidateCard {
+        margin-right: 150px;
+        width: 70%;
+        height: 50%;
+        img {
+            width: 50%;
+            height: 50%;
+        }
+        p {
+            font-size: 14px;
+        }
+    }
 }

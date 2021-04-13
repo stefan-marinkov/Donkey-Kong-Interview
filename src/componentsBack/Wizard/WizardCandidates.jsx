@@ -13,15 +13,18 @@ const WizardCandidates = (props) => {
     return (
         <>
             <div className="WizardCandidates">
-                <div className="divlista">
-                    <span>1</span> <b>Select Candidate</b>
+                <div className='divliste'>
+                    <div className="divlista">
+                        <span>1</span> <b>Select Candidate</b>
+                    </div>
+                    <div className="divlista">
+                        <span>2</span> Select Company
+                    </div>
+                    <div className="divlista">
+                        <span>3</span> Fill Report Details
+                    </div>
                 </div>
-                <div className="divlista">
-                    <span>2</span> Select Company
-                </div>
-                <div className="divlista">
-                    <span>3</span> Fill Report Details
-                </div>
+
             </div>
             <div className='listWithSearch'>
                 <ListOfCandidates nameCandidate={props.nameCandidate} />

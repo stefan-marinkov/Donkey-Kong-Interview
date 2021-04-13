@@ -33,3 +33,16 @@
     transition: 0.3s;
    
 }
+
+
+@media only screen and (max-width: 768px) {
+    .Candidate {
+        width: 100%;
+        img {
+
+        }
+              p{
+                  font-size: 20px;
+              }
+    }
+}
