@@ -8,7 +8,6 @@ const FrontEndPage = (props) => {
         <div className='FrontEndPage'>
             <Header />
             <div className="Search">
-                <h1>Candidates</h1>
                 <input type="text" placeholder="Search for users..."></input>
             </div>
             <hr></hr>

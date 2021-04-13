@@ -1,6 +1,5 @@
 .FrontEndPage {
     .Search {
-        justify-content: space-between;
         display: flex;
         align-items: center;
         margin: 15px;
@@ -8,6 +7,13 @@
             width: 20%;
             height: 25px;
             border-radius: 10px;
+            background-color: #eee;
+            border: none;
+            margin-left: 22px;
+        }
+        ::placeholder {
+            padding: 10px;
+            color: black;
         }
     }
     width: 100%;

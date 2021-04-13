@@ -65,8 +65,14 @@ const Wizard = props => {
 
     return (
         <>
+            <HeaderBack logOut={props.logOut} />
+            <div className="wizardreport">
+                <input type='text' placeholder='Search' onChange={(e) => props.searchReport(e.target.value)} />
+                <Link to="/backEnd"> <button>Report</button></Link>
+            </div>
+            <hr></hr>
             {!token ? <Redirect to='/'></Redirect > :
-                <div className='Wizard'><HeaderBack logOut={props.logOut} />
+                <div className='Wizard'>
                     <Switch >
                         <Route exact path='/wizard'> <WizardCandidates nameCandidate={nameCandidate} /></Route>
                         <Route exact path='/wizard/wizardCompany'>  <WizardCompany name={candName} nameCompany={nameCompany} /></Route>
@@ -82,9 +88,7 @@ const Wizard = props => {
                                 reportSet={reportSet}
                             /></Route>
                     </Switch>
-
                 </div>
-
             }
         </>
     )
