@@ -6,6 +6,7 @@ import FrontEndPage from './page/FrontEndPage'
 import BackEndPage from './page/BackEndPage'
 import Wizard from './componentsBack/Wizard'
 
+
 import { Route, Switch } from 'react-router-dom'
 import CandidatFront from './componentsFront/CandidatFront'
 import Login from './componentsFront/Login/Login';
@@ -33,8 +34,9 @@ function App() {
   const [listCompanies, setListCompanies] = useState([]);
   const [listReports, setListReports] = useState([]);
   const [value, setValue] = useState('')
-  const [id, setId] = useState(null)
-  const [token, setToken] = useState('')
+
+  const [token, setToken] = useState(localStorage.getItem("localToken") || '')
+
   console.log(token)
 
   const companies = '/companies'
@@ -81,12 +83,6 @@ function App() {
   filterRepo = listReports.filter(r => r.candidateName.toLowerCase().includes(value.toLowerCase()))
 
 
-  let oneCandidate = [];
-  oneCandidate = listCandidates.filter(c => c.id === id)
-
-  let candidateReport = [];
-  candidateReport = listReports.filter(c => c.candidateId === id)
-
   const logIn = (email, password) => {
     console.log(email, password)
     fetch('http://localhost:3333/login', {
@@ -103,12 +99,15 @@ function App() {
       .then(data => {
         if (data.accessToken)
           setToken(data)
+        localStorage.setItem("localToken", data.accessToken)
       })
 
   }
 
   const logOut = () => {
+    localStorage.removeItem("localToken")
     setToken('')
+
   }
 
   return (
@@ -117,33 +116,31 @@ function App() {
         <ListCompanyProvider value={listCompanies} >
           < ListReportsProvider value={listReports}>
             <ListCandidatesProvider value={listCandidates} >
-              <CandidatFrontProvider value={{ oneCandidate, candidateReport }} >
+              {/* <CandidatFrontProvider value={{ oneCandidate, candidateReport }} > */}
 
-                <Switch>
+              <Switch>
 
+                <Route exact path='/'><FrontEndPage can={listCandidates} logIn={logIn} /></Route>
+                <Route path="/candidatinfo/:id" render={(props) => <CandidatFront {...props} candidates={listCandidates} reports={listReports} />} ></Route>
+                <Route path="/Login" component={Login}></Route>
+                <Route exact path='/backEnd'>
+                  <BackEndPage
+                    report={filterRepo}
+                    deleteReport={deleteReport}
+                    searchReport={searchReport}
+                    logOut={logOut}
+                  /></Route>
 
-                  <Route exact path='/'><FrontEndPage can={listCandidates} setId={setId} logIn={logIn} /></Route>
-                  <Route path="/candidatinfo/:id" >
-                    <CandidatFront
-                      infoCandidates={oneCandidate}
-                      oneReport={candidateReport}
-                    /></Route>
-                  <Route path="/Login" component={Login}></Route>
-                  <Route exact path='/backEnd'>
-                    <BackEndPage
-                      report={filterRepo}
-                      deleteReport={deleteReport}
-                      searchReport={searchReport}
-                      logOut={logOut}
-                    /></Route>
+                <Route path="/wizard">
+                  <Wizard
+                    list={listCandidates}
+                    listCompany={listReports}
+                    logOut={logOut}
+                    report={filterRepo}
+                  /></Route>
+              </Switch>
 
-                  <Route path="/wizard"><Wizard list={listCandidates} listCompany={listReports} /></Route>
-
-
-
-                </Switch>
-
-              </CandidatFrontProvider>
+              {/* </CandidatFrontProvider> */}
             </ListCandidatesProvider>
           </ListReportsProvider>
         </ListCompanyProvider>
