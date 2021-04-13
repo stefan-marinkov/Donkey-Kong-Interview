@@ -5,6 +5,7 @@ import Header from '../HeaderFront';
 import ListOfReports from '../../componentsFront/ListOfReports';
 
 const CandidatFront = (props) => {
+
     const oneReport = props.reports.filter(e => e.candidateId === Number(props.match.params.id))
     return (
         <>

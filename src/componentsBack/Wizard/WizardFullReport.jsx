@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react'
 import './Wizard.scss'
-import DatePicker from 'react-date-picker';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 import { Link } from 'react-router-dom'
-import { listReportsContext } from '../../App'
+
 
 const WizardCompany = (props) => {
-    //  const linkReports = useContext(listReportsContext)
+
     return (
         <>
             <div className="WizardCompany">
@@ -53,8 +54,6 @@ const WizardCompany = (props) => {
                                         <option value={'hr'}>hr</option>
                                         <option value={'tech'}>tech</option>
                                         <option value={'final'}>final</option>
-
-
                                     </select>
                                 </label>
                                 <label>
@@ -77,7 +76,12 @@ const WizardCompany = (props) => {
                             <Link to='/wizard/wizardCompany'><button className="nextbuttondetails">Back</button></Link>
                             <Link to='/backEnd'><button className="nextbuttondetails" onClick={props.reportSet}>Submit</button></Link>
                         </div>
-
+                        <Link to='/wizard/wizardCompany'><button>Prev</button></Link>
+                        <Link to='/backEnd'><button onClick={() => {
+                            props.reportSet()
+                            props.setDataIsValid(false)
+                        }
+                        }>Submit</button></Link>
                     </div>
 
                 </div>
