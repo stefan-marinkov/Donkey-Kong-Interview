@@ -1,12 +1,12 @@
 import React, { useContext, useState } from 'react'
 import './Wizard.scss'
-import DatePicker from 'react-date-picker';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 import { Link } from 'react-router-dom'
-import { listReportsContext } from '../../App'
+
 
 const WizardCompany = (props) => {
-    //  const linkReports = useContext(listReportsContext)
 
 
     return (
@@ -42,9 +42,8 @@ const WizardCompany = (props) => {
                                 <p>Interview Date:</p>
                                 <div>
                                     <DatePicker
-                                        onChange={props.setDate}
-                                        date={props.date}
-                                    />
+                                        selected={props.startDate}
+                                        onChange={date => props.setStartDate(date)} />
                                 </div>
                             </label>
                             <label>
@@ -73,7 +72,11 @@ const WizardCompany = (props) => {
                         </form>
 
                         <Link to='/wizard/wizardCompany'><button>Prev</button></Link>
-                        <Link to='/wizard/'><button onClick={props.reportSet}>Submit</button></Link>
+                        <Link to='/backEnd'><button onClick={() => {
+                            props.reportSet()
+                            props.setDataIsValid(false)
+                        }
+                        }>Submit</button></Link>
                     </div>
 
                 </div>

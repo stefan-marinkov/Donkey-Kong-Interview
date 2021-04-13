@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 import { useState } from 'react'
 
 const ListOfReports = props => {
-
+    console.log(props)
     const [isOpen, setIsOpen] = useState(false);
 
     function toggleModal() {
@@ -23,12 +23,14 @@ const ListOfReports = props => {
                         <th>View</th>
                     </tr>
                     {props.oneReport.map(r => (
+
                         <>
                             <tr className="row2">
                                 <th>{r.companyName}</th>
                                 <th>{r.interviewDate.slice(4, 15)}</th>
                                 <th>{r.status}
                                 </th>
+                                {console.log(r)}
                                 <th className="viewmodal">
                                     <i className="fa fa-eye" onClick={toggleModal} tia-hidden="true"></i>
                                     <Modal
