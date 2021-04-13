@@ -6,18 +6,18 @@ import WizardCompany from './WizardCompany'
 import WizardCandidates from './WizardCandidates'
 import WizardFullReport from './WizardFullReport'
 import { loginContext } from '../../App'
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const Wizard = props => {
-    const { token } = useContext(loginContext)
+    const { token, setDataIsValid } = useContext(loginContext)
 
     const [candName, setCandName] = useState(localStorage.getItem('getName') || '')
     const [companyName, setCompanyName] = useState(localStorage.getItem('getCompany') || '')
     const [phase, setPhase] = useState('')
     const [status, setStatus] = useState('')
     const [text, setText] = useState('')
-    const [date, setDate] = useState(new Date());
-    console.log(props)
+    const [startDate, setStartDate] = useState(new Date());
 
     const nameCandidate = (name) => {
         localStorage.setItem('getName', name)
@@ -28,7 +28,6 @@ const Wizard = props => {
         localStorage.setItem('getCompany', company)
         setCompanyName(company)
     }
-
 
     const reportSet = () => {
 
@@ -44,15 +43,15 @@ const Wizard = props => {
                 },
                 body: JSON.stringify(
                     {
-                        id: 61646703,
-                        candidateId: 66318927,
+                        // id: 61646743,
+                        // candidateId: 6631437,
                         candidateName: candName,
-                        companyId: 11081915,
+                        // companyId: 143915,
                         companyName: companyName,
-                        interviewDate: date,
+                        interviewDate: startDate,
                         phase: phase,
                         status: status,
-                        note: status,
+                        note: text,
                     }
                 )
             }
@@ -77,9 +76,10 @@ const Wizard = props => {
                                 setPhase={setPhase}
                                 setStatus={setStatus}
                                 setText={setText}
-                                setDate={setDate}
-                                date={date}
+                                setStartDate={setStartDate}
+                                startDate={startDate}
                                 reportSet={reportSet}
+                                setDataIsValid={setDataIsValid}
                             /></Route>
                     </Switch>
 

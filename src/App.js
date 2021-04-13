@@ -34,6 +34,7 @@ function App() {
   const [listCompanies, setListCompanies] = useState([]);
   const [listReports, setListReports] = useState([]);
   const [value, setValue] = useState('')
+  const [dataIsValid, setDataIsValid] = useState(false)
 
   const [token, setToken] = useState(localStorage.getItem("localToken") || '')
 
@@ -46,10 +47,14 @@ function App() {
   const baseUrl = 'http://localhost:3333/api'
 
   useEffect(() => {
-    fetch(baseUrl + reports)
-      .then(res => res.json())
-      .then(data => setListReports(data))
-  }, []);
+    if (!dataIsValid)
+      fetch(baseUrl + reports)
+        .then(res => res.json())
+        .then(data => {
+          setListReports(data)
+          setDataIsValid(true);
+        })
+  }, [dataIsValid]);
 
   useEffect(() => {
     fetch(baseUrl + companies)
@@ -74,6 +79,7 @@ function App() {
       }
     })
       .then(res => res.json())
+
   }
 
   const searchReport = (target) => {
@@ -98,7 +104,7 @@ function App() {
     }).then(results => results.json())
       .then(data => {
         if (data.accessToken)
-          setToken(data)
+          setToken(data.accessToken)
         localStorage.setItem("localToken", data.accessToken)
       })
 
@@ -112,7 +118,7 @@ function App() {
 
   return (
     <div className="App">
-      <LoginContextProvider value={{ logIn, token }}>
+      <LoginContextProvider value={{ logIn, token, setDataIsValid }}>
         <ListCompanyProvider value={listCompanies} >
           < ListReportsProvider value={listReports}>
             <ListCandidatesProvider value={listCandidates} >
