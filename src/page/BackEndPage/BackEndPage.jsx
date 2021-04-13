@@ -4,6 +4,7 @@ import HeaderBack from '../../componentsBack/HeaderBack'
 import ListOfReports from "../../componentsBack/ListOfReports"
 import { Redirect } from 'react-router'
 import { loginContext } from '../../App'
+import { Link } from 'react-router-dom'
 
 
 function BackEndPage(props) {
@@ -15,8 +16,11 @@ function BackEndPage(props) {
                 <div className='BackEndPage'>
                     <HeaderBack changeReport={props.changeReport} logOut={props.logOut} />
                     <div className="divsearch">
-                        <h1>Candidates</h1>
                         <input type='text' placeholder='Search' onChange={(e) => props.searchReport(e.target.value)} />
+                        <div className="buttons">
+                            <Link to="/backEnd"> <button>Report</button></Link>
+                            <Link to='/wizard'><button>Create report</button></Link>
+                        </div>
                     </div>
                     <hr></hr>
                     {props.report.map(r => {

@@ -2,6 +2,7 @@
     width: 100%;
     display:flex;
     flex-direction: row;
+    margin-top: 35px;
 }
 .divsearch{
     display: flex;
@@ -86,6 +87,11 @@ hr{
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
+            }
+            a {
+                width: 0%;
+                display: inline-block;
+                margin-left: 920px;
             }
         }
         .nextbutton {
@@ -259,7 +265,31 @@ hr{
     cursor: pointer;
 }
 
-.buttondivdetails {
-    margin-left: 17px;
-    margin-top: 15px;
+.detailsbuttons {
+    margin-left: 720px;
+    display: flex;
+    margin-top: 20px;
 }
+
+.wizardreport {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    width: 96%;
+    input {
+        width: 20%;
+        height: 25px;
+        border-radius: 10px;
+        background-color: #eee;
+        border: none;
+        margin-right: 10px;
+    }
+    ::placeholder {
+        padding: 15px;
+        color: black;
+
+    }
+}
+
+
