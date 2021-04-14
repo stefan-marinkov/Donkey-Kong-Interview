@@ -107,6 +107,9 @@ function App() {
           setToken(data.accessToken)
         localStorage.setItem("localToken", data.accessToken)
       })
+      .then(d => {
+        return !token ? alert('Wrong Password') : null
+      })
 
   }
 

@@ -46,7 +46,12 @@ const WizardCandidates = (props) => {
                     </div>
                     <div className='listWithSearch'>
                         <ListOfCandidates candidates={filterName} nameCandidate={props.nameCandidate} candidateId={props.candidateId} candId={props.candId} />
-                        <Link to='/wizard/wizardCompany'><button className="nextbutton">Next</button></Link>
+                        <div className="nextbuttonDiv">
+
+                            <Link to='/wizard/wizardCompany'><button className="nextbutton" disabled={!props.candId}>Next</button></Link>
+
+                        </div>
+
                     </div>
                 </div>
             </div>

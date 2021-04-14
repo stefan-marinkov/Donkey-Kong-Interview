@@ -12,9 +12,9 @@ const Wizard = props => {
 
     const { token, setDataIsValid } = useContext(loginContext)
 
-    const [candName, setCandName] = useState(localStorage.getItem('getName') || '')
+    const [candName, setCandName] = useState('')
     const [candId, setCandId] = useState('')
-    const [companyName, setCompanyName] = useState(localStorage.getItem('getCompany') || '')
+    const [companyName, setCompanyName] = useState('')
     const [compId, setCompId] = useState('')
 
     const [phase, setPhase] = useState('')
@@ -25,12 +25,12 @@ const Wizard = props => {
 
 
     const nameCandidate = (name) => {
-        localStorage.setItem('getName', name)
+        //localStorage.setItem('getName', name)
         setCandName(name)
     }
 
     const nameCompany = (company) => {
-        localStorage.setItem('getCompany', company)
+        //localStorage.setItem('getCompany', company)
         setCompanyName(company)
     }
     const candidateId = (id) => {
@@ -97,6 +97,9 @@ const Wizard = props => {
                                 startDate={startDate}
                                 reportSet={reportSet}
                                 setDataIsValid={setDataIsValid}
+                                phase={phase}
+                                text={text}
+                                status={status}
                             /></Route>
                     </Switch>
                 </div>

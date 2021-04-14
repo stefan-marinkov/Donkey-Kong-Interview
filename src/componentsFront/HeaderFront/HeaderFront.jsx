@@ -7,9 +7,12 @@ const Header = props => {
     return (
         <div>
             <header>
-                <div className="logo">
-                    INTERVIEW REPORTS
+                <Link to="/">
+                    <div className="logo">
+                        INTERVIEW REPORTS
                 </div>
+                </Link>
+
                 <div >
                     <Link to="/Login"><button>Login</button></Link>
                 </div>

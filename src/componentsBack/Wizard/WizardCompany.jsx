@@ -52,9 +52,8 @@ const WizardCompany = (props) => {
                                 })
                             }
                             <div className="buttondiv">
-
-                                <Link to='/wizard/wizardFullReport'><button className="nextbuttoncompany">Next</button></Link>
                                 <Link to='/wizard'><button className="nextbuttoncompany">Back</button></Link>
+                                <Link to='/wizard/wizardFullReport'><button className="nextbuttoncompany" disabled={!props.compId}>Next</button></Link>
                             </div>
                         </div>
                     </div>

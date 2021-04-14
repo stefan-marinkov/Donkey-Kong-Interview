@@ -79,7 +79,7 @@ const WizardCompany = (props) => {
                                 props.reportSet()
                                 props.setDataIsValid(false)
                             }
-                            } className="nextbuttonsdetails">Submit</button></Link>
+                            } className="nextbuttonsdetails" disabled={!props.phase || !props.text || !props.status}>Submit</button></Link>
                         </div>
                     </div>
 
