@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom'
 
 
 const WizardCompany = (props) => {
-
     return (
         <>
             <div className="WizardCompany">
@@ -44,7 +43,7 @@ const WizardCompany = (props) => {
                                         <DatePicker
                                             selected={props.startDate}
                                             onChange={date => props.setStartDate(date)}
-
+                                            maxDate={new Date()}
 
                                         />
                                     </div>

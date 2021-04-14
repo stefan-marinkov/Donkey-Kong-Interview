@@ -1,5 +1,5 @@
 .ListOfReports {
-    width: 95%;
+    width: 90%;
     height: 5rem;
     background: #157eabd5;
     display: flex;
@@ -8,8 +8,7 @@
     align-items: center;
     color: white;
     border-radius: 10px;
-    margin-left: 35px;
-    margin-top: 35px;
+    margin: 2% auto;
     border: 1px solid black;
     .inreports {
         display: flex;
@@ -25,8 +24,13 @@
         align-items: center;
         height: 50px;
         border-right: 1px solid white;
+       
         p {
-            font-size: 24px;
+            width: 90%;
+            font-size: 1.5rem;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
         }
         .headlinereport {
             font-size: 15px;
@@ -95,6 +99,7 @@
             color: white;
             cursor: pointer;
         }
+        
     }
   }
   
@@ -107,11 +112,12 @@
     background-color: rgba(0, 0, 0, 0.75);
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 678px) {
     .ListOfReports .aboutRepo p {
-        font-size: 16px;
+        font-size: .6rem;
     }
     .ListOfReports{
      margin-left: 20px;
+     height: 100px;
     }
 }

@@ -2,7 +2,10 @@
     width: 100%;
     display:flex;
     flex-direction: row;
+    margin: 0 auto;
     margin-top: 35px;
+    justify-content: center;
+    align-items: center;
 }
 .divsearch{
     display: flex;
@@ -10,6 +13,7 @@
     align-items: center;
     margin: 10px;
     width: 100%;
+    
    h1{
        margin-left: 25px;
        font-family: monospace;
@@ -21,12 +25,22 @@
         border-radius: 10px;
         background-color: #eee;
         border: none;
+        &:focus {
+            outline: none;
+        }
    }
    ::placeholder {
     padding: 15px;
     color: black;
 }
+
+
   
+}
+textarea {
+    &:focus {
+        outline: none;
+    }
 }
 hr{
     color: black;
@@ -36,17 +50,16 @@ hr{
     .WizardCandidates {
         width: 30%;
         height: 458px;
+        display:flex;
         justify-content: center;
         align-items: center;
         font-size: 20px;
-        margin: 5px;
-        padding-left: 125px;
-        padding-top: 100px;
+        
+        
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         border: solid #157eab 2px;
         border-radius: 10px;
-        margin-left: 25px;
-        margin-top: 25px;
+       
         .divlista {
             span {
                 display: inline-flex;
@@ -91,10 +104,10 @@ hr{
             a {
                 width: 0%;
                 display: inline-block;
-                margin-left: 920px;
             }
         }
-        .nextbutton {
+        
+         .nextbutton {
             border: #157eab solid 2px;
             background-color: white;
             color: #157eab;
@@ -102,8 +115,6 @@ hr{
             height: 35px;
             transition: 0.6s;
             border-radius: 10px;
-            float: right;
-            margin-right: 63px;
         }
         .nextbutton:hover {
             background-color: #157eab;
@@ -186,18 +197,13 @@ hr{
     height: 35px;
     transition: 0.6s;
     border-radius: 10px;
-    float: right;
-    margin-right: 15px;
+    
 }
 .nextbuttoncompany:hover {
     background-color: #157eab;
     color: white;
     transition: 0.6s;
     cursor: pointer;
-}
-
-.buttondiv {
-    margin-left: 595px;
 }
 
 .line {
@@ -254,9 +260,6 @@ hr{
     }
 }
 
-.nextbuttondetails {
-    margin-left: -15px;
-}
 
 .nextbuttonsdetails {
     border: #157eab solid 2px;
@@ -266,7 +269,6 @@ hr{
     height: 35px;
     transition: 0.6s;
     border-radius: 10px;
-    margin-left: 35px;
 }
 .nextbuttonsdetails:hover {
     background-color: #157eab;
@@ -294,14 +296,98 @@ hr{
         background-color: #eee;
         border: none;
         margin-right: 10px;
+        &:focus {
+            outline: none;
+        }
     }
     ::placeholder {
         padding: 15px;
         color: black;
 
     }
+    .linkReport,
+        .linkCreate {
+            border-radius: 10px;
+            height: 30px;
+            width: 30%;
+            color: white;
+            transition: 0.6s;
+        
+        }
+        .btnReport,
+        .btnCreate {
+            margin-right: 20px;
+            border-radius: 10px;
+            height: 30px;
+            width: 100%;
+            color: white;
+            background-color: #157eab;
+            border: white 2px solid;
+            transition: all 0.6s ease;
+            &:hover {
+                cursor: pointer;
+                background-color: white;
+                color: #157eab;
+                transition: 0.6s;
+                border: #157eab 2px solid;
+            }
+        }
 }
 
+.divsearch {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    .buttons {
+        width: 30%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin-right: 5%;
+        
+        .linkReport,
+        .linkCreate {
+            border-radius: 10px;
+            height: 30px;
+            width: 100%;
+            color: white;
+            transition: 0.6s;
+        
+        }
+        .btnReport,
+        .btnCreate {
+            border-radius: 10px;
+            height: 30px;
+            width: 100%;
+            color: white;
+            background-color: #157eab;
+            border: white 2px solid;
+            transition: all 0.6s ease;
+            &:hover {
+                cursor: pointer;
+                background-color: white;
+                color: #157eab;
+                transition: 0.6s;
+                border: #157eab 2px solid;
+            }
+        }
+    }
+}
+
+.flexrow{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5%;
+}
+
+.buttondiv {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
 
 @media only screen and (max-width: 768px) {
     .WizardCandidates {
@@ -322,17 +408,13 @@ hr{
         margin-top: -250px;
     }
     .WizardCompany {
-        height: 350px;
-        padding-left: 20px;
-        padding-top: 50px;
+        height: 100;
+        padding: 0;
     }
     .divlista {
         font-size: 13px;
     }
-    .buttondiv {
-        margin-left: 1px;
-        margin-right: 25px;
-    }
+    
     .listFullReport .date-phase-status {
         width: 100%;
         display: inline-block;
@@ -350,4 +432,3 @@ hr{
         margin-left: 17px;
     }
 }
-

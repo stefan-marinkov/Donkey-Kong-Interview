@@ -116,6 +116,14 @@ function App() {
 
   }
 
+  const [candidateName, setCandidateName] = useState('')
+
+  const searchCandidate = (name) => {
+    setCandidateName(name)
+  }
+
+  let filterCandidateName = listCandidates.filter(c => c.name.toLowerCase().includes(candidateName.toLowerCase()))
+
   return (
     <div className="App">
       <LoginContextProvider value={{ logIn, token, setDataIsValid }}>
@@ -126,7 +134,7 @@ function App() {
 
               <Switch>
 
-                <Route exact path='/'><FrontEndPage can={listCandidates} logIn={logIn} /></Route>
+                <Route exact path='/'><FrontEndPage searchCandidate={searchCandidate} logIn={logIn} filterCandidateName={filterCandidateName} /></Route>
                 <Route path="/candidatinfo/:id" render={(props) => <CandidatFront {...props} candidates={listCandidates} reports={listReports} />} ></Route>
                 <Route path="/Login" component={Login}></Route>
                 <Route exact path='/backEnd'>
@@ -141,8 +149,10 @@ function App() {
                   <Wizard
                     list={listCandidates}
                     listCompany={listReports}
+                    companyList={listCompanies}
                     logOut={logOut}
                     report={filterRepo}
+                    searchReport={searchReport}
                   /></Route>
               </Switch>
 

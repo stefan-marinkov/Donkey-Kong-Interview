@@ -6,18 +6,23 @@ import WizardCompany from './WizardCompany'
 import WizardCandidates from './WizardCandidates'
 import WizardFullReport from './WizardFullReport'
 import { loginContext } from '../../App'
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const Wizard = props => {
+
     const { token, setDataIsValid } = useContext(loginContext)
 
     const [candName, setCandName] = useState(localStorage.getItem('getName') || '')
+    const [candId, setCandId] = useState('')
     const [companyName, setCompanyName] = useState(localStorage.getItem('getCompany') || '')
+    const [compId, setCompId] = useState('')
+
     const [phase, setPhase] = useState('')
     const [status, setStatus] = useState('')
     const [text, setText] = useState('')
-    const [startDate, setStartDate] = useState(new Date());
+    const [startDate, setStartDate] = useState(new Date())
+
+
 
     const nameCandidate = (name) => {
         localStorage.setItem('getName', name)
@@ -28,12 +33,16 @@ const Wizard = props => {
         localStorage.setItem('getCompany', company)
         setCompanyName(company)
     }
+    const candidateId = (id) => {
+        setCandId(id)
+    }
+
+    const companyId = (id) => {
+        setCompId(id)
+
+    }
 
     const reportSet = () => {
-
-
-
-
         fetch('http://localhost:3333/api/reports/',
             {
                 method: 'POST',
@@ -43,12 +52,12 @@ const Wizard = props => {
                 },
                 body: JSON.stringify(
                     {
-                        // id: 61646743,
-                        // candidateId: 6631437,
+                        // id: 1,
+                        candidateId: candId,
                         candidateName: candName,
-                        // companyId: 143915,
+                        companyId: compId,
                         companyName: companyName,
-                        interviewDate: startDate,
+                        interviewDate: startDate.toString(),
                         phase: phase,
                         status: status,
                         note: text,
@@ -62,19 +71,21 @@ const Wizard = props => {
     }
 
 
+
     return (
         <>
             <HeaderBack logOut={props.logOut} />
-            <div className="wizardreport">
+            {/* <div className="wizardreport">
                 <input type='text' placeholder='Search' onChange={(e) => props.searchReport(e.target.value)} />
-                <Link to="/backEnd"> <button>Report</button></Link>
-            </div>
+               
+            </div> */}
+
             <hr></hr>
             {!token ? <Redirect to='/'></Redirect > :
                 <div className='Wizard'>
                     <Switch >
-                        <Route exact path='/wizard'> <WizardCandidates nameCandidate={nameCandidate} /></Route>
-                        <Route exact path='/wizard/wizardCompany'>  <WizardCompany name={candName} nameCompany={nameCompany} /></Route>
+                        <Route exact path='/wizard'> <WizardCandidates nameCandidate={nameCandidate} candidateId={candidateId} candId={candId} /></Route>
+                        <Route exact path='/wizard/wizardCompany'>  <WizardCompany name={candName} nameCompany={nameCompany} companyId={companyId} compId={compId} /></Route>
                         <Route exact path='/wizard/WizardFullReport'>
                             <WizardFullReport
                                 nameComp={companyName}

@@ -18,8 +18,8 @@ function BackEndPage(props) {
                     <div className="divsearch">
                         <input type='text' placeholder='Search' onChange={(e) => props.searchReport(e.target.value)} />
                         <div className="buttons">
-                            <Link to="/backEnd"> <button>Report</button></Link>
-                            <Link to='/wizard'><button>Create report</button></Link>
+                            <Link to="/backEnd" className="linkReport"> <button className="btnReport">Report</button></Link>
+                            <Link to='/wizard' className='linkCreate'><button className='btnCreate'>Create report</button></Link>
                         </div>
                     </div>
                     <hr></hr>

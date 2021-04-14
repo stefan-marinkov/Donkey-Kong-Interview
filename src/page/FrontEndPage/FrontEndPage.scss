@@ -10,6 +10,9 @@
             background-color: #eee;
             border: none;
             margin-left: 22px;
+            &:focus{
+                outline: none;
+            }
         }
         ::placeholder {
             padding: 10px;
