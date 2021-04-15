@@ -18,7 +18,6 @@ const WizardCandidates = (props) => {
 
     let filterName = listCandidates.filter(r => r.name.toLowerCase().includes(value.toLowerCase()))
 
-    console.log(filterName)
 
     return (
         <>

@@ -90,7 +90,6 @@ function App() {
 
 
   const logIn = (email, password) => {
-    console.log(email, password)
     fetch('http://localhost:3333/login', {
       method: 'POST',
       headers: {
@@ -108,7 +107,7 @@ function App() {
         localStorage.setItem("localToken", data.accessToken)
       })
       .then(d => {
-        return !token ? alert('Wrong Password') : null
+        return !token ? alert('Email or Password are not valid!') : null
       })
 
   }

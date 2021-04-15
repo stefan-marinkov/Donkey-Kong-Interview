@@ -77,7 +77,7 @@ const Wizard = props => {
             <HeaderBack logOut={props.logOut} />
             {/* <div className="wizardreport">
                 <input type='text' placeholder='Search' onChange={(e) => props.searchReport(e.target.value)} />
-               
+            
             </div> */}
 
             <hr></hr>
